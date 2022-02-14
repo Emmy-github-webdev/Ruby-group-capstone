@@ -38,8 +38,8 @@ irb
 
 👤 **Emmanuel Ogah**
 
-- GitHub: [GitHub](https://github.com/Emmy-github-webdev).
-- Twitter: [Twitter](https://twitter.com/OgaemmanuelOga).
+- GitHub: [Emmy-github-webdev](https://github.com/Emmy-github-webdev).
+- Twitter: [@OgaemmanuelOga](https://twitter.com/OgaemmanuelOga).
 - LinkedIn: [Linkedin](https://www.linkedin.com/in/emmanuel-oga-16171584/).
 
 
