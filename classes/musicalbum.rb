@@ -11,4 +11,4 @@ class MusicAlbum < Item
   end 
 end
 
-
+p MusicAlbum.new('2Face', '2/10/2010', on_spotify: true)
