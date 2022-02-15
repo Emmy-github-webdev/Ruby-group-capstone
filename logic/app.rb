@@ -1,21 +1,20 @@
+require 'json'
 Dir['../classes/*.rb'].sort.each { |file| require file}
 require_relative 'logic_app'
 
 class MusicAlbumCreation
   def initialize
-    @appData = Logic.new
-    @musicalbs = @appData.fetch_musicalbum
+    @appdata = Logic.new
+    @musicalbums = @appdata.fetch_musicalbum
   end
 
-  attr_reader :musicalbs
+  attr_reader :musicalbums
 
   def addMusicAlbum(name, on_spotify, publish_date, genre, author, label)
-    @musicalbs << MusicAlbum.new(name, on_spotify, publish_date, genre, author, label)    
+    @musicalbums << MusicAlbum.new(name, on_spotify, publish_date, genre, author, label)    
   end
 
   def create_musicalbum
-    puts 'Do you want to add new music album, list music album, or list all genres?'
-    user_option = gets.chomp
     print 'Name: '
     name = gets.chomp
     print 'On spotify (true or false)?: '
@@ -30,56 +29,88 @@ class MusicAlbumCreation
     label = gets.chomp
 
     addMusicAlbum(name, on_spotify, publish_date, genre, author, label)
+    puts 'Album created successfully'
   end
   
   def list_musicalbums
-    @musicalbs.each_with_index do |musicalb, i|
+    @musicalbums.each_with_index do |musicalb, i|
       puts "#{i} - Genre: #{musicalb.genre}, Published Date: #{musicalb.publish_date}, On Spotify: #{musicalb.on_spotify}"
     end
   end 
+
+  def add_musicalbum_or_list_musicalbum
+    puts 'Do you want to add new music album (1), list music album (2), or list all genres?'
+    user_option = gets.chomp
+    user_option == '1' ? create_musicalbum : list_musicalbums
+  end
+  
   
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  def run_app
-    choose_a_number
+class GenreList
+  def initialize
+    @appdata = Logic.new
+    @genredata = @appdata.fetch_genre
   end
 
-  def choose_a_number
-    puts
-    puts 'Please choose an option by entering a number:'
-    puts '1 - Work with book'
-    puts '2 - Work with music album'
-    puts '3 - Work with Game'
-    puts '4 - Exit'
+  attr_reader :genredata 
 
-    user_selection = gets.chomp
-    action_based_on_number_choosed user_selection
-  end
-
-  def action_based_on_number_choosed(option)
-    case option
-    when '1'
-      puts 'work with book'
-    when '2'
-      puts 'work with music album'
-    when '3'
-      puts 'work with Game'
-    else
-      exit
+  def list_genres
+    @genredata.each_with_index do |genredat, i|
+      puts "#{i} - #{genredat.name}"
     end
   end
+  
+end
+
+class NoteOperation
+  def initialize
+    @add_musicalbum = MusicAlbumCreation.new
+    @appdata = Logic.new(@add_musicalbum)
+  end
+
+  def work_with_music(user_input)
+    case user_input
+    when 2
+      @add_musicalbum.add_musicalbum_or_list_musicalbum
+    end
+  end
+
+  def exit_operation(user_input)
+    case user_input
+    when 4
+      @appdata.save_data_to_file
+      puts 'Exiting...'
+    else
+      puts 'Incorrect selection'
+    end
+  end
+  
+end
+
+class DisplayMenuOption
+
+  def initialize
+    @choices = ['Work with book', 'Work with music album', 'Work with Game', 'Exit']
+    @noteoperation = NoteOperation.new
+  end
+
+  def menu
+    puts 'Please choose an option by entering a number:'
+    @choices.each_with_index { |choice, i| puts "#{i + 1}. #{choice}"}
+  end
+
+  def option(user_choice)
+    case user_choice
+    when 1
+      puts 'Work with book'
+    when 2
+      @noteoperation.work_with_music(user_choice)
+    when 3
+      puts 'Work with game'
+    else
+      @noteoperation.exit_operation(user_choice)
+    end
+  end
+  
 end
