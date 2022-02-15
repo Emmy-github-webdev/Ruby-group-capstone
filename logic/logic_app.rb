@@ -18,7 +18,6 @@ class Logic
     end
   end
   
-
   def add_new_musicalbum
     @add_musicalbum.musicalbums.each do |musicalbum|
       @musicalbum_array << {
