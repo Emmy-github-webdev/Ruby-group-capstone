@@ -6,18 +6,16 @@ class Item
     @archived = false
     @publish_date = publish_date
   end
-
-  def move_to_archive
-    @archived = true if can_be_archived?
-  end
-
-  private
+  attr_reader :archived
 
   def can_be_archived?
     date = DateTime.now.year
-    p date, @publish_date, date - @publish_date
     return true if date - @publish_date > 10
 
     false
+  end
+
+  def move_to_archive
+    @archived = can_be_archived?
   end
 end
