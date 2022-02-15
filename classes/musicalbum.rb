@@ -8,7 +8,7 @@ class MusicAlbum < Item
 
   def can_be_archived?
     @publish_date > 10 && @on_spotify
-  end 
+  end
 end
 
 p MusicAlbum.new('2Face', '2/10/2010', on_spotify: true)

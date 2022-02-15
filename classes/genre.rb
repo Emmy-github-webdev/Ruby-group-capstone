@@ -11,5 +11,4 @@ class Genre
     @items.push(item)
     item.gnre = self
   end
-    
 end
