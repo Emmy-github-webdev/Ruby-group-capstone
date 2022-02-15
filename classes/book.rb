@@ -7,7 +7,7 @@ class Book < Item
     @cover_state = cover_state
   end
 
-attr_reader :publish_date, :publisher, :cover_state
+  attr_reader :publish_date, :publisher, :cover_state
 
   def can_be_archived?
     return true if super || @cover_state == 'bad'

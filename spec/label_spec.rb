@@ -1,8 +1,8 @@
-require './classes/label.rb'
+require './classes/label'
 
 describe 'Test class LABEL' do
   before(:each) do
-    @label = Label.new('12 Rules for Life','red')
+    @label = Label.new('12 Rules for Life', 'red')
   end
   it 'Should be an instance of label' do
     expect(@label).to be_instance_of Label
