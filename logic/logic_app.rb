@@ -11,6 +11,14 @@ class Logic
     musicalbum
   end
 
+  def self.fetch_genre(genres)
+    puts 'Genre list is empty' if genres.empty?
+    genres.each_with_index do |genre, index|
+      puts "#{index} - class: #{genre['class']}, #{genre['name']}"
+    end
+  end
+  
+
   def add_new_musicalbum
     @add_musicalbum.musicalbums.each do |musicalbum|
       @musicalbum_array << {
