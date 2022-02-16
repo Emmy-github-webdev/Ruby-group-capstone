@@ -1,8 +1,8 @@
-require_relative './logic/app'
+require_relative 'app'
 
 def main
   app = App.new
-  app.run_app
+  app.run
 end
 
 main
