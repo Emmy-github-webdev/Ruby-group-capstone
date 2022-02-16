@@ -18,4 +18,11 @@ class AddMusicAlbum
     end
   end
 
+  def list_genres
+    puts 'List of all Genre:'
+    @albums.each_with_index do |album, indx|
+      puts " #{indx + 1}) #{album['genre']}"
+    end
+  end
+
 end
