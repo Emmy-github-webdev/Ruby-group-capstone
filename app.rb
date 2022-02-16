@@ -27,7 +27,6 @@ class App
     puts '1.- Work with books'
     puts '2.- Work with Albums'
     puts '3.- Work with games'
-
-    puts '4.- Exiting...'
+    puts '4.- Exiting'
   end
 end

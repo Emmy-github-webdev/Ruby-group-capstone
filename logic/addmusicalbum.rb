@@ -26,14 +26,16 @@ class AddMusicAlbum
   end
 
   def add_albums
-    print 'Genre: '
-    genre = gets.chomp.capitalize!
-    print 'Author: '
-    author = gets.chomp.capitalize!
+   
     print 'Published_Date(dd/mm/yyyy): '
     publish_date = gets.chomp
+    print 'Author: '
+    author = gets.chomp.capitalize!
     print 'On spotify?: '
     on_spotify = gets.chomp.capitalize!
+    print 'Genre: '
+    genre = gets.chomp.capitalize!
+    
 
     temp_album = MusicAlbum.new(publish_date, genre, author, on_spotify)
 
@@ -46,15 +48,15 @@ class AddMusicAlbum
       if defined?(album['genre'])
         {
           genre: album['genre'],
-          author: album['author'],
           publish_date: album['publish_date'],
+          author: album['author'],
           on_spotify: album['on_spotify']
         }
       else
         {
           genre: album.genre,
-          author: album.author,
           publish_date: album.publish_date,
+          author: album.author,
           on_spotify: album.on_spotify
         }
       end

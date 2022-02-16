@@ -1,5 +1,5 @@
-require_relative './add_music_album'
-require_relative './list_genre'
+require_relative './addmusicalbum'
+require_relative './listgenre'
 
 class AlbumInput
   def initialize
@@ -24,7 +24,7 @@ class AlbumInput
       start
     when '2'
       @add_album.add_albums
-      puts 'Book Created Succesfully'
+      puts 'Music album Created Succesfully'
       start
     when '3'
       @add_album.fetch_albums
