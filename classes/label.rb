@@ -9,7 +9,7 @@ class Label
   attr_reader :title, :color
 
   def add_item(book)
-    book[:label] = { label_id: @label_id, title: @title, color: @color }
+    book.label = { label_id: @label_id, title: @title, color: @color }
     @items << book
   end
 end
