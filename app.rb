@@ -6,6 +6,22 @@ class App
     @album_input = AlbumInput.new
   end
 
+  def run
+    show_menu
+    selection = gets.chomp
+    case selection
+    when '1'
+      puts 'Where work with book lives'
+    when '2'
+      @album_input.start
+    when '3'
+      puts 'Where work with game lives'
+    else
+      puts 'Thank you!'
+      nil
+    end
+  end
+
   def show_menu
     puts 'Select an option to create'
     puts '1.- Work with books'
