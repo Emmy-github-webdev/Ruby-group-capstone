@@ -15,7 +15,5 @@ describe MusicAlbum do
         expect(@musicalbum.archived).to be false
       end
     end
-
   end
-  
 end
