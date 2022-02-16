@@ -10,31 +10,28 @@ class MusicAlbumCreation
 
   attr_reader :musicalbums
 
-  def addMusicAlbum(name, on_spotify, publish_date, genre, author, label)
-    @musicalbums << MusicAlbum.new(name, on_spotify, publish_date, genre, author, label)    
+  def addmusicalbum(genre, author, publish_date, on_spotify)
+    new_musicalbum = MusicAlbum.new(genre, author, publish_date, on_spotify)
+    @musicalbums.push(new_musicalbum)
+    puts 'Album created successfully'
   end
 
   def create_musicalbum
-    print 'Name: '
-    name = gets.chomp
-    print 'On spotify (true or false)?: '
-    on_spotify = gets.chomp
-    print 'Publised date (dd/mm/yyyy): '
-    publish_date = gets.chomp
     print 'Genre: '
     genre = gets.chomp
+    genre.capitalize!
     print 'Author: '
     author = gets.chomp
-    print 'label: '
-    label = gets.chomp
-
-    addMusicAlbum(name, on_spotify, publish_date, genre, author, label)
-    puts 'Album created successfully'
+    print 'Publised date (dd/mm/yyyy): '
+    publish_date = gets.chomp
+    print 'On spotify (true or false)?: '
+    on_spotify = gets.chomp
+    addmusicalbum(genre, author, publish_date, on_spotify)
   end
   
   def list_musicalbums
     @musicalbums.each_with_index do |musicalb, i|
-      puts "#{i} - Genre: #{musicalb.genre}, Published Date: #{musicalb.publish_date}, On Spotify: #{musicalb.on_spotify}"
+      puts "#{i} - Genre: #{musicalb.genre}, Author: #{musicalb.author}, Published Date: #{musicalb.publish_date}, On Spotify: #{musicalb.on_spotify}"
     end
   end 
 
@@ -43,8 +40,6 @@ class MusicAlbumCreation
     user_option = gets.chomp
     user_option == '1' ? create_musicalbum : list_musicalbums
   end
-  
-  
 end
 
 class GenreList
