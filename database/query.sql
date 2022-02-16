@@ -25,4 +25,22 @@ CREATE TABLE items (
   genre_id int,
   CONSTRAINT kf_albums FOREIGN KEY(album_id) REFERENCES albums(id) ON DELETE CASCADE,
   CONSTRAINT kf_genres FOREIGN KEY(genre_id) REFERENCES genres(id) ON DELETE CASCADE
-); 
+);
+
+
+CREATE TABLE books(
+    book_id int GENERATED ALWAYS AS IDENTITY,
+    publisher VARCHAR(200),
+    publish_date int,
+    cover_state VARCHAR(5)
+    PRIMARY KEY(book_id),
+    item_id int NOT NULL,
+    CONSTRAINT kf_items_books FOREIGN KEY(book_id) REFERENCES items(id) ON DELETE CASCADE
+);
+
+CREATE TABLE labels (
+  label_id int,
+  author VARCHAR(45),
+  color VARCHAR(45),
+  PRIMARY KEY(label_id)
+);
