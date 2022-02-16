@@ -8,6 +8,6 @@ class Genre
 
   def add_item(item)
     @items.push(item)
-    item.gnre = self
+    item.genre = self
   end
 end
