@@ -1,4 +1,4 @@
-require_relative './classes/musicalbum'
+require_relative '../classes/musicalbum'
 require 'json'
 require 'date'
 
@@ -60,5 +60,18 @@ class AddMusicAlbum
       end
     end
     File.write('./data/musicalbum.json', arr.to_json)
+  end
+
+  def fetch_albums
+    exists = false
+    exists = true if File.exist?('./data/musicalbum.json')
+    unless exists
+      f = File.open('./data/musicalbum.json', 'w+')
+      f.write(JSON.generate([]))
+      f.close
+    end
+    album_file = File.open('./data/musicalbum.json', 'r+')
+    data = album_file.read
+    @albums = JSON.parse(data)
   end
 end
