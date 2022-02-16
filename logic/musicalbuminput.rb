@@ -14,6 +14,7 @@ class AlbumInput
     puts '4.- Exit'
   end
 
+  # rubocop:disable Metrics/MethodLength
   def start
     show_menu
     response = gets.chomp
@@ -38,3 +39,4 @@ class AlbumInput
     end
   end
 end
+# rubocop:enable Metrics/MethodLength

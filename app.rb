@@ -1,5 +1,5 @@
-Dir['./classes/*.rb'].sort.each { |file| require file}
-Dir['./logic/*.rb'].sort.each { |file| require file}
+Dir['./classes/*.rb'].sort.each { |file| require file }
+Dir['./logic/*.rb'].sort.each { |file| require file }
 
 class App
   def initialize

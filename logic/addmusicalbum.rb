@@ -26,7 +26,6 @@ class AddMusicAlbum
   end
 
   def add_albums
-   
     print 'Published_Date(dd/mm/yyyy): '
     publish_date = gets.chomp
     print 'Author: '
@@ -35,7 +34,6 @@ class AddMusicAlbum
     on_spotify = gets.chomp.capitalize!
     print 'Genre: '
     genre = gets.chomp.capitalize!
-    
 
     temp_album = MusicAlbum.new(publish_date, genre, author, on_spotify)
 

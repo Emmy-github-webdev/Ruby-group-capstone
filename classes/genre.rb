@@ -1,5 +1,4 @@
 class Genre
-
   attr_accessor :items, :genre
 
   def initialize(name)

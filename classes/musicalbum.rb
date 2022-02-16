@@ -5,7 +5,7 @@ class MusicAlbum < Item
 
   def initialize(genre, publish_date, author, on_spotify)
     @on_spotify = on_spotify
-    super(genre, publish_date, author )
+    super(genre, publish_date, author)
   end
 
   def can_be_archived?
