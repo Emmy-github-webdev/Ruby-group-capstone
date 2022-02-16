@@ -41,4 +41,24 @@ class AddMusicAlbum
     save_albums
   end
 
+  def save_albums
+    arr = @albums.map do |album|
+      if defined?(album['genre'])
+        {
+          genre: album['genre'],
+          author: album['author'],
+          publish_date: album['publish_date'],
+          on_spotify: album['on_spotify']
+        }
+      else
+        {
+          genre: album.genre,
+          author: album.author,
+          publish_date: album.publish_date,
+          on_spotify: album.on_spotify
+        }
+      end
+    end
+    File.write('./data/musicalbum.json', arr.to_json)
+  end
 end
