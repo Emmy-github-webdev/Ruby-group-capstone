@@ -1,6 +1,5 @@
 class Genre
-  attr_accessor :name
-  attr_reader :items
+  attr_accessor :items, :genre
 
   def initialize(name)
     @name = name
@@ -9,6 +8,6 @@ class Genre
 
   def add_item(item)
     @items.push(item)
-    item.gnre = self
+    item.genre = self
   end
 end

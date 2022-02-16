@@ -1,13 +1,16 @@
 require 'date'
 
 class Item
-  def initialize(publish_date, genre: '', author: '', source: '', label: '')
+  attr_accessor :genre
+  attr_reader :archived, :author, :publish_date
+  attr_writer :label
+
+  def initialize(publish_date, author, label = 'undefined', genre = nil)
     @id = Random.rand(1...10_000_000)
     @archived = false
     @publish_date = publish_date
     @genre = genre
     @author = author
-    @source = source
     @label = label
   end
 
@@ -15,11 +18,13 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  private
+  def add_genre(genre)
+    @genre = genre
+    @genre.item.push(self) unless @genre.include?(genre)
+  end
 
   def can_be_archived?
     date = DateTime.now.year
-    p date, @publish_date, date - @publish_date
     return true if date - @publish_date > 10
 
     false

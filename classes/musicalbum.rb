@@ -1,14 +1,18 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  def initialize(genre, publish_date, on_spotify: false)
+  attr_accessor :archive, :publish_date, :author, :on_spotify
+
+  def initialize(genre, publish_date, author, on_spotify)
     @on_spotify = on_spotify
-    super(publish_date, genre: genre)
+    super(genre, publish_date, author)
   end
 
   def can_be_archived?
-    @publish_date > 10 && @on_spotify
+    return true if super && @on_spotify == true
+
+    false
   end
 end
 
-p MusicAlbum.new('2Face', '2/10/2010', on_spotify: true)
+# p MusicAlbum.new('Comedy', '2Face', '2/10/2010', on_spotify: true)
