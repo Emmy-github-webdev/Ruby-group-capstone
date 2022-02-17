@@ -4,6 +4,7 @@ Dir['./logic/*.rb'].sort.each { |file| require file }
 class App
   def initialize
     @album_input = AlbumInput.new
+    @game_input = GameInput.new
   end
 
   def run
@@ -15,7 +16,7 @@ class App
     when '2'
       @album_input.start
     when '3'
-      puts 'Where work with game lives'
+      @game_input.start
     else
       puts 'Thank you!'
       nil
