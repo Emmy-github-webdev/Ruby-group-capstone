@@ -4,6 +4,7 @@ Dir['./logic/*.rb'].sort.each { |file| require file }
 class App
   def initialize
     @album_input = AlbumInput.new
+    @book_logic = BookLogic.new
   end
 
   def run
@@ -11,7 +12,7 @@ class App
     selection = gets.chomp
     case selection
     when '1'
-      puts 'Where work with book lives'
+      @book_logic.start
     when '2'
       @album_input.start
     when '3'

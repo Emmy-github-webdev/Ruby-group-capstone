@@ -7,7 +7,7 @@ class AlbumInput
   end
 
   def show_menu
-    puts 'Would you like to add a music ablum, fetch all ablums, or genres?'
+    puts 'Would you like to add a music album, fetch all albums, or genres?'
     puts '1.- List all albums'
     puts '2.- Add a music album'
     puts '3.- List all Genres'
@@ -25,7 +25,7 @@ class AlbumInput
       start
     when '2'
       @add_album.add_albums
-      puts 'Music album Created Succesfully'
+      puts 'Music album Created Successfully'
       start
     when '3'
       @add_album.fetch_albums
