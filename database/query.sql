@@ -44,3 +44,14 @@ CREATE TABLE labels (
   color VARCHAR(45),
   PRIMARY KEY(label_id)
 );
+
+CREATE TABLE games (
+  id SERIAL PRIMARY KEY,
+  multiplayer
+  last_played DATE NOT NULL,
+  publish_date DATE NOT NULL,
+  archived BOOLEAN NOT NULL DEFAULT FALSE,
+  genre_id INT REFERENCES genre(id),
+  label_id INT REFERENCES label(id),
+  author_id INT REFERENCES author(id)
+);
