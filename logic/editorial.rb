@@ -54,8 +54,8 @@ class Editorial
           publish_date: book['publish_date'],
           publisher: book['publisher'],
           cover_state: book['cover_state'],
-          label_title: book['label']['title'],
-          label_color: book['label']['color'] }
+          label_title: book['label_title'],
+          label_color: book['label_color'] }
       else
         { genre: book.genre,
           author: book.author,
