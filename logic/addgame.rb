@@ -11,13 +11,15 @@ class AddGame
   def add_game
     puts 'Author: '
     author = gets.chomp.capitalize!
+    puts 'Genre: '
+    genre = gets.chomp
     puts 'Is this game Multiplayer? [True/False]: '
     multiplayer = gets.chomp.downcase
     puts 'When was the last time you played this game (yyyy): '
     last_played_at = gets.chomp
     puts 'Whats the publish year of the game?'
     publish_date = gets.chomp.to_i(10)
-    new_game = Game.new(multiplayer, last_played_at, publish_date, author)
+    new_game = Game.new(publish_date,  multiplayer, genre, last_played_at, author)
     @games << new_game
     save_games
   end
@@ -25,6 +27,7 @@ class AddGame
   def list_games
     @games.each do |game|
       puts "Author: #{game['author']},
+        Genre: #{game['genre']},
         Multiplayer: #{game['multiplayer']},
         Last_played_at: #{game['last_played_at']},
         Publish_date: #{game['publish_date']}"
@@ -41,11 +44,13 @@ class AddGame
     arr = @games.map do |game|
       if defined?(game.author)
         { author: game.author,
+          genre: game.genre,
           multiplayer: game.multiplayer,
           last_played_at: game.last_played_at,
           publish_date: game.publish_date }
       else
         { author: game['author'],
+          genre: game['genre'],
           multiplayer: game['multiplayer'],
           last_played_at: game['last_played_at'],
           publish_date: game['publish_date'] }
