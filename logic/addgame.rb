@@ -19,7 +19,7 @@ class AddGame
     last_played_at = gets.chomp
     puts 'Whats the publish year of the game?'
     publish_date = gets.chomp.to_i(10)
-    new_game = Game.new(publish_date,  multiplayer, genre, last_played_at, author)
+    new_game = Game.new(publish_date, multiplayer, genre, last_played_at, author)
     @games << new_game
     save_games
   end
